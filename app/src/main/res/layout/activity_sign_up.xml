@@ -5,15 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#6446b9"
-
-    tools:context=".LoginActivity">
+    tools:context=".SignUp">
 
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Please Log In"
+        android:text="Please Sign up"
         android:textColor="#ffffff"
         android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -60,6 +59,38 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
+                    android:text="Name"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/fullName"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/edittext_background"
+                    android:ems="10"
+                    android:hint="Enter name"
+                    android:inputType="text"
+                    android:paddingLeft="10sp"
+                    android:textColorHint="#f5f5f5"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
                     android:text="Email"
                     android:textColor="#ffffff"
                     android:textSize="16sp"
@@ -78,14 +109,6 @@
                     android:paddingLeft="10sp"
                     android:textColorHint="#f5f5f5"
                     android:textSize="16sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="32dp"
-                android:layout_marginEnd="32dp"
-                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/textView4"
@@ -111,22 +134,15 @@
                     android:textColorHint="#f5f5f5"
                     android:textSize="16sp" />
 
-                <TextView
-                    android:id="@+id/textView6"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:textColor="#ffffff"
-                    android:textAlignment="center"
-                    android:text="Forgot Password?" />
+
 
                 <Button
-                    android:id="@+id/logIn"
+                    android:id="@+id/signUp"
                     android:layout_width="match_parent"
                     android:background="@drawable/orange_btn_background"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="50dp"
-                    android:text="log in"
+                    android:text="sign up"
                     android:textSize="18sp"/>
             </LinearLayout>
         </LinearLayout>
