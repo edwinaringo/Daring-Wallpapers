@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "991068254702",
+    "project_id": "drinks-e1141",
+    "storage_bucket": "drinks-e1141.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:991068254702:android:6d0544fb44be8a2fd09eff",
+        "android_client_info": {
+          "package_name": "com.example.daringdrinks"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "991068254702-b11mie5e2sbj0ppekjblj3su1n23unct.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.daringdrinks",
+            "certificate_hash": "2a11bab9e1fee659b618b057a4b95c379a7840bb"
+          }
+        },
+        {
+          "client_id": "991068254702-gkkhqvbtngiknl9b9gcch0hj3nqrh640.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAsgpcYYfSsoCT35uxVCwh_p8CxaLWM0g0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "991068254702-gkkhqvbtngiknl9b9gcch0hj3nqrh640.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
