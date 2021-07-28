@@ -142,6 +142,7 @@
                     android:background="@drawable/orange_btn_background"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="50dp"
+                    android:layout_marginBottom="16dp"
                     android:text="sign up"
                     android:textSize="18sp"/>
             </LinearLayout>
