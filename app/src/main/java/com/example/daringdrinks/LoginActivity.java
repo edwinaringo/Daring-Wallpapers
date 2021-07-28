@@ -33,6 +33,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         editTextEmail = (EditText) findViewById(R.id.email);
         editTextPassword = (EditText) findViewById(R.id.password);
+
+        mAuth = FirebaseAuth.getInstance();
     }
 
     @Override
@@ -78,7 +80,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     startActivity(new Intent(LoginActivity.this, CocktailsActivity.class));
-
                 }else{
                     Toast.makeText(LoginActivity.this, "Login failed! Please check your credentials", Toast.LENGTH_SHORT).show();
                 }
