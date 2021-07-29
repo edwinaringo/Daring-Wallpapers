@@ -59,9 +59,11 @@ public class SetWallpaperActivity extends AppCompatActivity {
                     }
 
                 }).submit();
+                Toast.makeText(SetWallpaperActivity.this, "Wallpaper is set!", Toast.LENGTH_SHORT).show();
 
             }
         });
+
 
     }
 }
