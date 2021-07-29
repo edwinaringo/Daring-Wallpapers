@@ -1,14 +1,23 @@
 package com.example.daringdrinks;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.WallpaperManager;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
+
+import java.io.IOException;
 
 public class SetWallpaperActivity extends AppCompatActivity {
 
@@ -30,8 +39,29 @@ public class SetWallpaperActivity extends AppCompatActivity {
         setWallpaperBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Glide.with(SetWallpaperActivity.this).asBitmap().load(imgUrl).listener(new RequestListener<Bitmap>() {
+                    @Override
+                    public boolean onResourceReady(Bitmap resource, Object model, Target<Bitmap> target, DataSource dataSource, boolean isFirstResource) {
+                        try{
+                            wallpaperManager.setBitmap(resource);
+                        }catch (IOException e){
+                            e.printStackTrace();
+                            Toast.makeText(SetWallpaperActivity.this, "Failed to set wallpaper", Toast.LENGTH_SHORT).show();
+
+                        }
+                        return false;
+                    }
+
+                    @Override
+                    public boolean onLoadFailed(@Nullable GlideException e, Object model, Target target, boolean isFirstResource) {
+                        Toast.makeText(SetWallpaperActivity.this, "Failed to load Image", Toast.LENGTH_SHORT).show();
+                        return false;
+                    }
+
+                }).submit();
 
             }
         });
+
     }
 }
