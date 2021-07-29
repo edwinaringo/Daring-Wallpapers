@@ -17,6 +17,11 @@ import java.util.ArrayList;
 public class WallpaperRVAdapter extends RecyclerView.Adapter<WallpaperRVAdapter.ViewHolder> {
     private ArrayList<String> wallpaperRVArrayList;
     private Context context;
+
+    public WallpaperRVAdapter(ArrayList<String> wallpaperRVArrayList, Context context) {
+        this.wallpaperRVArrayList = wallpaperRVArrayList;
+        this.context = context;
+    }
     @NonNull
     @Override
     public WallpaperRVAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
