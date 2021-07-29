@@ -87,6 +87,7 @@ public class WallPapersActivity extends AppCompatActivity implements CategoryRVA
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
+                loadingPB.setVisibility(View.GONE);
                 JSONArray photoArray = null;
                 try {
                     photoArray = response.getJSONArray("photos");
@@ -117,6 +118,7 @@ public class WallPapersActivity extends AppCompatActivity implements CategoryRVA
             }
         };
         requestQueue.add(jsonObjectRequest);
+
 
     }
 
@@ -173,6 +175,7 @@ public class WallPapersActivity extends AppCompatActivity implements CategoryRVA
             }
         };
         requestQueue.add(jsonObjectRequest);
+
 
 
     }
