@@ -12,7 +12,21 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class WallPapersActivity extends AppCompatActivity implements CategoryRVAdapter.CategoryClickInterface {
 
@@ -24,6 +38,7 @@ public class WallPapersActivity extends AppCompatActivity implements CategoryRVA
     private ArrayList<CategoryRVModal> categoryRVModalArrayList;
     private CategoryRVAdapter categoryRVAdapter;
     private WallpaperRVAdapter wallpaperRVAdapter;
+    //563492ad6f91700001000001b5bb63b623514e0e9b596e11a4ac229f
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +99,44 @@ public class WallPapersActivity extends AppCompatActivity implements CategoryRVA
     }
 
     private void getWallpapers() {
+        wallpaperArrayList.clear();
+        loadingPB.setVisibility(View.VISIBLE);
+        String url = "https://api.pexels.com/v1/curated?per_page=30&page=1";
+        RequestQueue requestQueue = Volley.newRequestQueue(WallPapersActivity.this);
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                loadingPB.setVisibility(View.GONE);
+                try {
+                    JSONArray photoArray = response.getJSONArray("photos");
+                    for(int i=0; i<photoArray.length(); i++){
+                        JSONObject photoObj = photoArray.getJSONObject(i);
+                        String imgUrl = photoObj.getJSONObject("src").getString("portrait");
+                        wallpaperArrayList.add(imgUrl);
+                    }
+                    wallpaperRVAdapter.notifyDataSetChanged();
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(WallPapersActivity.this, "Failed to load wallpapers", Toast.LENGTH_SHORT).show();
+
+            }
+        }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String,String> headers = new HashMap<>();
+                headers.put("Authorization","563492ad6f91700001000001b5bb63b623514e0e9b596e11a4ac229f");
+                return headers;
+            }
+        };
+        requestQueue.add(jsonObjectRequest);
+
 
     }
 
