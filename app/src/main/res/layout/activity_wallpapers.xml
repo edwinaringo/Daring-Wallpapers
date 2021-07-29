@@ -44,7 +44,7 @@
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/idRLCategory"
+        android:id="@+id/idRVCategory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -55,8 +55,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/idRLCategory"
-        android:id="@+id/iRLWallpapers"
+        android:layout_below="@+id/idRVCategory"
+        android:id="@+id/iRVWallpapers"
         android:layout_marginTop="5dp"/>
 
     <ProgressBar
