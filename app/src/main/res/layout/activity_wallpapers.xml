@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#6446b9"
+    android:background="#02343F"
     tools:context=".WallPapersActivity">
 
     <LinearLayout
