@@ -80,6 +80,43 @@ public class WallPapersActivity extends AppCompatActivity implements CategoryRVA
     }
 
     private void getWallpapersByCategory(String category){
+        wallpaperArrayList.clear();
+        loadingPB.setVisibility(View.VISIBLE);
+        String url = "https://api.pexels.com/v1/search?query="+category+"&per_page=30&page=1";
+        RequestQueue requestQueue = Volley.newRequestQueue(WallPapersActivity.this);
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                JSONArray photoArray = null;
+                try {
+                    photoArray = response.getJSONArray("photos");
+                    for(int i=0; i<photoArray.length(); i++){
+                        JSONObject photoObj = photoArray.getJSONObject(i);
+                        String imgUrl = photoObj.getJSONObject("src").getString("portrait");
+                        wallpaperArrayList.add(imgUrl);
+
+                    }
+                    wallpaperRVAdapter.notifyDataSetChanged();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(WallPapersActivity.this, "Failed to load wallpapers", Toast.LENGTH_SHORT).show();
+
+            }
+        }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String>headers = new HashMap<>();
+                headers.put("Authorization","563492ad6f91700001000001b5bb63b623514e0e9b596e11a4ac229f");
+                return headers;
+            }
+        };
+        requestQueue.add(jsonObjectRequest);
 
     }
 
