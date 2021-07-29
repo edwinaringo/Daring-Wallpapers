@@ -79,7 +79,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    startActivity(new Intent(LoginActivity.this, CocktailsActivity.class));
+                    startActivity(new Intent(LoginActivity.this, WallPapersActivity.class));
                 }else{
                     Toast.makeText(LoginActivity.this, "Login failed! Please check your credentials", Toast.LENGTH_SHORT).show();
                 }
